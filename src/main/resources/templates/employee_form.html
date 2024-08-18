@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+</head>
+<body>
+<h1 th:text="${employee.id != null ? 'Edit Employee' : 'New Employee'}"></h1>
+<form th:action="@{${employee.id != null ? '/employees/update/' + employee.id : '/employees'}}"
+      th:object="${employee}" method="post">
+
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" th:field="*{firstName}" />
+    <br/>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" th:field="*{lastName}" />
+    <br/>
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" />
+    <br/>
+    <button type="submit" th:text="${employee.id != null ? 'Update' : 'Create'}"></button>
+</form>
+<a href="/employees">Back to Employee List</a>
+</body>
+</html>
